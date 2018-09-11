@@ -38,18 +38,10 @@ public class CacaPalavra {
 	static void procuraPalavra(String palavra, char[][] mat){
 		for(int i = 1; i < mat.length; i++) {
 			for(int j = 1; j < mat[0].length; j++) {
-				
-				boolean resp = procuraPalavraDir(i, j, palavra, mat,0 ,1);
+				boolean resp = procuraPalavraDir(i, j, palavra, mat);
 				if(resp == true) {
 					System.out.printf("L(%d,%d)\n",i, j);
 				}
-				
-				resp = procuraPalavraDir(i, j, palavra, mat,0 ,-1);
-				if(resp == true) {
-					System.out.printf("O(%d,%d)\n",i, j);
-				}
-				
-				
 			}
 		}
 	}
