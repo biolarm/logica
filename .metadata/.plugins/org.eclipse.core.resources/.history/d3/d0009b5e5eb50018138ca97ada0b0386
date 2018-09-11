@@ -1,0 +1,83 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class CacaPalavra {
+
+	public static void main(String[] args) throws Exception {
+		
+		FileReader fr = new FileReader("D:/cacapalavra.txt");
+		BufferedReader br = new BufferedReader(fr);
+		
+		String linha = br.readLine();
+		
+		int dim = Integer.parseInt(linha);
+		char[][] diagrama = new char[dim + 2][dim + 2];
+		preencheDiagramaComArroba(diagrama);
+		
+		for (int i = 0; i <= dim; i++) {
+			linha = br.readLine();
+			preenchendoLinhaDaMatriz(1, diagrama, linha);
+		}
+		
+		linha = br.readLine(); // qntd de palavras
+		int qtdPalavras = Integer.parseInt(linha);
+		String[] lista = new String[qtdPalavras];
+		
+		for(int i = 0 ; i < qtdPalavras; i++) {
+			lista[i] = br.readLine();
+		}
+		
+		for(int i = 0; i < qtdPalavras; i++) {
+			lista[i] = br.readLine();
+		} 
+		
+		for(int i = 0; i < qtdPalavras; i++) {
+			System.out.println("Procurando: " + lista[i]);
+			procuraPalavra(lista[i]; diagrama);
+		}
+		
+	}
+	
+	static void procuraPalavra(String palavra, char[][] mat){
+		for(int i = 1; i < mat.length; i++) {
+			for(int j = 1; j < mat[0].length; j++) {
+				boolean resp = procuraPalavraLeste(i, j, palavra, mat);
+				if(resp == true) {
+					System.out.printf("L(%d,%d)\n",i, j);
+				}
+			}
+		}
+	}
+	
+	//novo metodo simplificando o anterior 
+	static boolean procuraPalavraLeste(int lin, int col, String palavra, char[][] mat){
+		int k = 0;
+		while( k < palavra.length() && mat[lin][col] == palavra.charAt(k)) {
+			k++;
+			col++;
+		}
+		if(k == palavra.length()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	static void preenchendoLinhaDaMatriz(int lin, char[][] mat, String conjunto) {
+		
+		for (int j = 0; j < conjunto.length(); j++) {
+			mat[lin][j+1] = conjunto.charAt(0);
+		}
+		
+	}
+
+	static void preencheDiagramaComArroba(char[][] mat) {
+		for (int i = 0; i < mat.length; i++) {
+			for (int j = 0; j < mat[0].length; j++) {
+				mat[i][j] = '@';
+			}
+		}
+		
+	}
+
+}

@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class CacaPalavra {
+
+	public static void main(String[] args) throws Exception {
+		
+		FileReader fr = new FileReader("D:/cacapalavra.txt");
+		BufferedReader br = new BufferedReader(fr);
+		
+		String linha = br.readLine();
+		
+		int dim = Integer.parseInt(linha);
+		char[][] diagrama = new char[dim + 2][dim + 2];
+		
+		
+		
+		
+		
+
+	}
+
+}

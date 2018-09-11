@@ -1,0 +1,16 @@
+
+public class Exemplo {
+
+	public static void dobra(int num) {
+		num = 2 * num;		
+	}
+	
+	public static void main(String[] args) {
+		
+		int a = 10;
+		dobra (a);
+		System.out.println(a);
+		 
+	}
+	
+}
